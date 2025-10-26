@@ -1,0 +1,16 @@
+.hero-background {
+        /* Замените 'path/to/your/image.jpg' на реальный путь к вашему фоновому изображению */
+        background-image: url('img/b00bf2d26f475507fb0331c150464f95682b4fe0.jpg'); 
+        background-size: cover; /* Изображение растянется на всю секцию */
+        background-position: center; /* Центрирование изображения */
+        background-repeat: no-repeat;
+    }
+    /* Опциональный темный оверлей для лучшей читаемости текста */
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 50, 0.75); /* Темно-синий/черный цвет с прозрачностью 75% */
+    }
