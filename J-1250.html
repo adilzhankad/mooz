@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пристенная Холодильная Горка J-1250 - MOOZTAU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mooztau-blue': '#0F58CA', // Цвет кнопки "Связаться"
+                        'mooztau-dark': '#2B3E62', // Цвет фона секции "Хотите быструю доставку"
+                        'mooztau-footer': '#0E1A31', // Цвет подвала
+                        'mooztau-header': '#F4F9FF' // Светлый оттенок для фона
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+<header x-data="{ mobileMenuOpen: false }" class="w-full z-20 bg-mooztau-header text-white shadow-lg relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0">
+                <a href="#">
+                    <img src="img/image 6.svg" alt="Логотип компании MOOZTAU" class="h-10 w-auto"> 
+                </a>
+            </div>
+
+            <nav class="hidden md:flex space-x-8 items-center">
+                
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
+                    <button class="hover:text-blue-400 flex items-center focus:outline-none text-black">
+                        Главная
+                        <svg class="ml-1 h-4 w-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" 
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="absolute left-0 mt-2 w-64 rounded-md shadow-lg z-30 origin-top-left 
+                            bg-white/10 backdrop-blur-sm border border-white/20">
+                        <div class="py-1" role="menu">
+                            <a href="#glavnaya" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Главная</a>
+                            <a href="#products" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Продукты</a>
+                            <a href="#production" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Отечественное производство</a>
+                            <a href="#gallery" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Галерея Реализованных Проектов</a>
+                            <a href="#service" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Сервис</a>
+                            <a href="#advantages" class="block px-4 py-2 text-black hover:bg-white/20 hover:text-white" role="menuitem">Преимущества</a>
+                        </div>
+                    </div>
+                </div>
+                
+<a href="#contact" class="bg-mooztau-blue hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-3xl transition duration-300 ml-8">
+    Связаться
+</a>
+            </nav>
+
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = true" class="text-white p-2">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div x-show="mobileMenuOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 transform translate-x-full"
+         x-transition:enter-end="opacity-100 transform translate-x-0"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 transform translate-x-0"
+         x-transition:leave-end="opacity-0 transform translate-x-full"
+         class="fixed inset-0 bg-white z-40 p-4 md:hidden">
+
+        <div class="flex justify-between items-center h-20">
+            <a href="#">
+                <img src="img/image 6.svg" alt="Логотип компании MOOZTAU" class="h-10 w-auto"> 
+            </a>
+            <button @click="mobileMenuOpen = false" class="text-gray-800 p-2">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div class="mt-8 space-y-4 text-gray-800">
+            <a href="#glavnaya" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Главная</a>
+            <a href="#products" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Продукты</a>
+            <a href="#production" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Отечественное Производство</a>
+            <a href="#gallery" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Галерея Реализованных Проектов</a>
+            <a href="#service" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Сервис</a>
+            <a href="#advantages" @click="mobileMenuOpen = false" class="block py-4 border-b border-gray-200 text-lg hover:text-blue-600">Преимущества</a>
+            
+            <div class="pt-10 text-center"> 
+                <a href="#contact" @click="mobileMenuOpen = false" 
+                   class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 
+                          rounded-full transition duration-300"> Связаться
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+<main class="py-12 md:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <a href="index.html" class="inline-flex items-center text-gray-600 hover:text-mooztau-blue mb-8 text-sm">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Назад
+        </a>
+
+        <div class="flex flex-col lg:flex-row gap-10" x-data="{ 
+            mainImage: 'img/products/J-1250/11.jpg',
+            thumbnails: [
+                { src: 'img/products/J-1250/11.jpg', alt: 'миниатюра 1' },
+                { src: 'img/products/J-1250/12.jpg', alt: 'миниатюра 2' },
+                { src: 'img/products/J-1250/13.jpg', alt: 'миниатюра 3' },
+                { src: 'img/products/J-1250/14.jpg', alt: 'миниатюра 4' }
+            ] 
+        }">
+
+            <div class="lg:w-1/2">
+                <h1 class="text-3xl font-light text-gray-800 mb-6 lg:hidden">Пристенная Холодильная Горка J-1250</h1>
+                
+                <div class="bg-gray-50 rounded-lg p-6 flex justify-center items-center h-100">
+                    <img :src="mainImage" alt="Пристенная Холодильная Горка J-1250" class="max-h-full object-contain transition duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                
+                <div class="flex space-x-4 mt-6 justify-center">
+                    <template x-for="thumb in thumbnails" :key="thumb.src">
+                        <div 
+                            class="w-20 h-20 rounded-lg p-1 cursor-pointer bg-white transition duration-200"
+                            :class="{ 'border-2 border-mooztau-blue': mainImage === thumb.src, 'border-2 border-transparent hover:border-gray-300': mainImage !== thumb.src }"
+                            @click="mainImage = thumb.src"
+                        >
+                            <img :src="thumb.src" :alt="thumb.alt" class="w-full h-full object-contain">
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <h1 class="text-3xl font-light text-gray-800 mb-6 hidden lg:block">Пристенная Холодильная Горка J-1250</h1>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Характеристики J-1250</h3>
+                    
+                    <div class="divide-y divide-gray-200 text-sm">
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Хладагент:</span>
+                            <span class="font-medium text-gray-800">R 290</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Цвет:</span>
+                            <span class="font-medium text-gray-800">Темно Серый</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Длина:</span>
+                            <span class="font-medium text-gray-800">125 См</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Ширина:</span>
+                            <span class="font-medium text-gray-800">54 См</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Высота:</span>
+                            <span class="font-medium text-gray-800">198 См</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Количество Полок:</span>
+                            <span class="font-medium text-gray-800">4+1</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Количество Компрессоров:</span>
+                            <span class="font-medium text-gray-800">1</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Энергопотребление:</span>
+                            <span class="font-medium text-gray-800">420 Вт</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Без Упаковки:</span>
+                            <span class="font-medium text-gray-800">150 Кг</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Объем:</span>
+                            <span class="font-medium text-gray-800">880 Л</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Температурный Режим:</span>
+                            <span class="font-medium text-gray-800">От ...+2/+7°C</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Материал Корпуса:</span>
+                            <span class="font-medium text-gray-800">Металлический</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Подсветка:</span>
+                            <span class="font-medium text-gray-800">LED</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Напряжение:</span>
+                            <span class="font-medium text-gray-800">220-240 В</span>
+                        </div>
+                        <div class="flex justify-between py-3">
+                            <span class="text-gray-600">Номинальная Частота:</span>
+                            <span class="font-medium text-gray-800">50 Гц</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                         <a href="#contact" 
+                           class="inline-block bg-mooztau-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 
+                                  rounded-3xl transition duration-300 text-lg shadow-md w-full md:w-auto">
+                            Связаться для Заказа
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+<footer class="bg-mooztau-footer text-gray-300 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-left">
+            
+            <div class="md:col-span-1">
+                <div class="mb-4">
+                    <img src="img/logo.png" alt="Логотип MOOZTAU" class="h-40 w-auto mb-4">
+                    <p class="text-sm">
+                        Мы производим современное холодильное оборудование, доступное каждому бизнесу в Казахстане.
+                    </p>
+                </div>
+                
+                <div class="flex space-x-3 mt-6">
+                    <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
+                        <img src="img/icon/telegram.svg" alt="Telegram">
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
+                        <img src="img/icon/whatsapp.svg" alt="WhatsApp">
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
+                        <img src="img/icon/instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
+                        <img src="img/icon/tiktok.svg" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-1">
+                <h3 class="text-xl font-semibold text-white mb-6">Полезные Ссылки</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#glavnaya" class="hover:text-white">Главная</a></li>
+                    <li><a href="#products" class="hover:text-white">Продукты</a></li>
+                    <li><a href="#production" class="hover:text-white">Отечественное Производство</a></li>
+                    <li><a href="#gallery" class="hover:text-white">Галерея Реализованных Проектов</a></li>
+                    <li><a href="#service" class="hover:text-white">Сервис</a></li>
+                    <li><a href="#advantages" class="hover:text-white">Преимущества</a></li>
+                    <li><a href="#contact" class="hover:text-white">Связаться С Нами</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-1">
+                <h3 class="text-xl font-semibold text-white mb-6">Наши Контакты</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><span class="font-medium text-white">Телефон:</span> +7 (701) 123-45-67</li>
+                    <li><span class="font-medium text-white">E-mail:</span> info@company.kz</li>
+                    <li><span class="font-medium text-white">Адрес:</span> Г. Алматы, Пр. Абая 45, Офис 210</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-gray-700 text-center text-xs">
+            &copy; Copyright 2010-2025 Mooztau.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
