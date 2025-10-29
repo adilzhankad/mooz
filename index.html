@@ -160,80 +160,51 @@
 
     <hr class="border-gray-200">
 
-   <section x-data="{ open: false }" class="py-16 bg-white">
+<section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-light mb-2">Наши Продукты</h2>
         <p class="text-gray-600 mb-10 max-w-xl mx-auto text-sm">
             От компактных витрин до промышленных холодильников — решения для любого бизнеса.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                <img src="img/products/1.jpg" alt="Продукт 1" class="mb-4 mx-auto max-h-40 object-contain">
-                <p class="text-sm font-semibold mb-1">Simple Door Display</p>
-                <p class="text-xs text-gray-500">Simple Door Display Fridge with Swinging Door</p>
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/11.jpg" alt="Пристенная Холодильная Витрина J-1250" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Витрина J-1250</p>
             </div>
             
-            <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                <img src="img/products/2.jpg" alt="Продукт 2" class="mb-4 mx-auto max-h-40 object-contain">
-                <p class="text-sm font-semibold mb-1">Deluxe Mini Display</p>
-                <p class="text-xs text-gray-500">Deluxe Mini Display Fridge with Sliding Door</p>
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/22.jpg" alt="Пристенная Холодильная Витрина J-2000" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Витрина J-2000</p>
             </div>
             
-            <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                <img src="img/products/3.jpg" alt="Продукт 3" class="mb-4 mx-auto max-h-40 object-contain">
-                <p class="text-sm font-semibold mb-1">4 Doors Display</p>
-                <p class="text-xs text-gray-500">4 Doors Display Fridge For Large Capacity</p>
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/33.jpg" alt="Пристенная Холодильная Витрина А-1250" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Витрина А-1250</p>
             </div>
 
-            <template x-if="open || window.innerWidth >= 768"> <div x-show="open || window.innerWidth >= 768" class="contents"> 
-                    
-                    <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                        <img src="img/products/4.jpg" alt="Продукт 4" class="mb-4 mx-auto max-h-40 object-contain">
-                        <p class="text-sm font-semibold mb-1">Four Glass Doors</p>
-                        <p class="text-xs text-gray-500">Four Glass Doors Top Mounted</p>
-                    </div>
-
-                    <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                        <img src="img/products/5.jpg" alt="Продукт 5" class="mb-4 mx-auto max-h-40 object-contain">
-                        <p class="text-sm font-semibold mb-1">Single Door Cooler</p>
-                        <p class="text-xs text-gray-500">Single Door Cooler For Display</p>
-                    </div>
-
-                    <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                        <img src="img/products/6.jpg" alt="Продукт 6" class="mb-4 mx-auto max-h-40 object-contain">
-                        <p class="text-sm font-semibold mb-1">Deluxe Mini Display</p>
-                        <p class="text-xs text-gray-500">Deluxe Mini Display Fridge</p>
-                    </div>
-
-                    <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                        <img src="img/products/7.jpg" alt="Продукт 7" class="mb-4 mx-auto max-h-40 object-contain">
-                        <p class="text-sm font-semibold mb-1">4 Doors Display</p>
-                        <p class="text-xs text-gray-500">4 Doors Display Fridge</p>
-                    </div>
-                    
-                    <div class="p-4 border border-gray-100 rounded-lg shadow-sm hover:shadow-lg transition duration-300">
-                        <img src="img/products/8.jpg" alt="Продукт 8" class="mb-4 mx-auto max-h-40 object-contain">
-                        <p class="text-sm font-semibold mb-1">Four Glass Doors</p>
-                        <p class="text-xs text-gray-500">Four Glass Doors Top Mounted Cooler</p>
-                    </div>
-                </div>
-            </template>
-        </div>
-
-        <div class="mt-10 md:hidden" x-show="!open">
-            <button @click="open = true" class="inline-flex items-center justify-center px-6 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition duration-150">
-                Ещё
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-        </div>
-
-        <div class="mt-10 md:hidden" x-show="open">
-            <button @click="open = false" class="inline-flex items-center justify-center px-6 py-2 border border-gray-300 text-gray-700 bg-white rounded-lg hover:bg-gray-50 transition duration-150">
-                Скрыть
-                <svg class="w-4 h-4 ml-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/44.jpg" alt="Пристенная Холодильная Витрина А-2000" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Витрина А-2000</p>
+            </div>
+            
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/55.jpg" alt="Пристенная Холодильная Витрина АТ-2000" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Витрина АТ-2000</p>
+            </div>
+            
+            <div class="pt-8 pb-4 px-4 border border-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="img/products/66.jpg" alt="Пристенная Холодильная Горка MoozTau E-1250" class="mb-6 mx-auto max-h-64 object-contain">
+                <p class="text-sm font-semibold mb-1">Пристенная Холодильная</p>
+                <p class="text-sm font-semibold mb-1">Горка MoozTau E-1250</p>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -330,40 +301,64 @@
 </section>
     <hr class="border-gray-200">
 
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-10 text-center">Наш Сервис</h2>
+<section class="py-16 bg-blue-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-center">
 
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                                        <img src="img/e8243a70127ca81de10509ddf619ffc6e518c71d.jpg" alt="Сервисное обслуживание" class="w-full h-auto object-cover rounded-lg shadow-xl">
-                </div>
-                <div class="md:w-1/2">
-                    <ul class="space-y-4 text-gray-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-                            <p>Комплексное сервисное обслуживание оборудования.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-                            <p>Доставка и монтаж оборудования в соответствии с инструкциями.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-                            <p>Полное сопровождение проектов любой сложности.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-                            <p>Гарантийное и послегарантийное обслуживание.</p>
-                        </li>
-                    </ul>
-                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg mt-8 transition duration-300">
-                        Заказать сервис
+            <div class="md:w-1/2 md:pr-10 mb-8 md:mb-0">
+                <img 
+                    src="img/e8243a70127ca81de10509ddf619ffc6e518c71d.jpg" 
+                    alt="Сервисное обслуживание" 
+                    class="w-full h-auto object-cover rounded-lg shadow-xl"
+                >
+            </div>
+            
+            <div class="md:w-1/2">
+                
+                <h2 class="text-3xl font-light mb-8 md:text-left">Сервис</h2>
+                
+                <ul class="space-y-6 text-gray-700 text-lg">
+                    
+                    <li class="flex items-start">
+                        <img src="img/icon/Group 19257.svg" alt="Иконка галочки" class="w-6 h-6 mr-3 flex-shrink-0 mt-1">
+                        <p>Осуществляем прямые поставки без посредников, обеспечивая своим клиентам конкурентные цены и выгодные условия для оптовых закупок, что позволяет существенно сократить затраты.</p>
+                    </li>
+                    
+                    <li class="flex items-start">
+                        <img src="img/icon/Group 19257.svg" alt="Иконка галочки" class="w-6 h-6 mr-3 flex-shrink-0 mt-1">
+                        <p>Регулярно обновляем ассортимент в соответствии с актуальными потребностями рынка, предлагая современное и надежное холодильное оборудование.</p>
+                    </li>
+                    
+                    <li class="flex items-start">
+                         <img src="img/icon/Group 19257.svg" alt="Иконка галочки" class="w-6 h-6 mr-3 flex-shrink-0 mt-1">
+                        <p>
+                            <a href="#" class=" font-medium">Заказы обрабатываются в кратчайшие сроки. Доставка осуществляется во все регионы Казахстана.</a>
+                        </p>
+                    </li>
+
+                    <li class="flex items-start">
+                        <img src="img/icon/Group 19257.svg" alt="Иконка галочки" class="w-6 h-6 mr-3 flex-shrink-0 mt-1">
+                        <p>Мы сопровождаем клиента на всех этапах – от подбора оборудования до его установки, предоставляя техническую поддержку и сервис.</p>
+                    </li>
+                    
+                    <li class="flex items-start">
+                        <img src="img/icon/Group 19257.svg" alt="Иконка галочки" class="w-6 h-6 mr-3 flex-shrink-0 mt-1">
+                        <p>Предоставляем официальную гарантию на 12 месяцев.</p>
+                    </li>
+                </ul>
+                
+                <div class="mt-8 text-center md:text-left">
+                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 text-lg w-full max-w-xs md:w-auto md:max-w-none">
+                        Начать Сотрудничество
                     </a>
                 </div>
+
             </div>
+            
         </div>
-    </section>
+        
+    </div>
+</section>
 
 
 <section class="py-16 bg-white">
@@ -382,9 +377,7 @@
 
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 text-left">
                 <div class="text-blue-600 flex-shrink-0">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 005.992 12H4.49C.876 12 0 13.568 0 17s.876 5 4.49 5h15.02C23.124 22 24 20.432 24 17s-.876-5-4.49-5h-1.502a12.02 12.02 0 002.618-5.016z"></path>
-                    </svg>
+<img src="img/icon/kachestvo.svg" alt="">
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">Качество</h3>
@@ -396,9 +389,7 @@
 
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 text-left">
                 <div class="text-blue-600 flex-shrink-0">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055v8.945h8.945A9.001 9.001 0 0011 3.055z"></path>
-                    </svg>
+<img src="img/icon/effectivnost.svg" alt="">
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">Эффективность</h3>
@@ -410,9 +401,7 @@
             
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 text-left">
                 <div class="text-blue-600 flex-shrink-0">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.298.17 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
+<img src="img/icon/oborudovania.svg" alt="">
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">Современное Оборудование</h3>
@@ -424,9 +413,7 @@
 
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 text-left">
                 <div class="text-blue-600 flex-shrink-0">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 018.618 3.04A12.02 12.02 0 005.992 12H4.49C.876 12 0 13.568 0 17s.876 5 4.49 5h15.02C23.124 22 24 20.432 24 17s-.876-5-4.49-5h-1.502a12.02 12.02 0 002.618-5.016z"></path>
-                    </svg>
+<img src="img/icon/kontrol.svg" alt="">
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-800">Контроль Качества</h3>
@@ -442,21 +429,22 @@
 
 
 
-    <section class="py-20 bg-[#F4F9FF]">
+<section class="py-20 bg-[#F4F9FF]">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-[#2B3E62] text-white p-10 md:p-16 rounded-3xl shadow-2xl">
             <div class="text-center">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6">
+                
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-6">
                     Хотите быструю доставку и лучшую цену?
                 </h2>
                 
-                <p class="text-base md:text-lg mb-10 text-white-300 max-w-2xl mx-auto">
+                <p class="text-sm md:text-lg mb-10 text-white/90 max-w-2xl mx-auto">
                     Мы предложим индивидуальное решение под ваши объёмы и сроки — быстро, выгодно и без посредников.
                 </p>
                 
                 <a href="#contact" 
-                   class="inline-block bg-[#0F58CA] hover:bg-blue-700 text-white font-semibold py-3 px-8 
-                          rounded-lg transition duration-300 text-lg shadow-md">
+                   class="text-sm md:text-lg inline-block bg-[#0F58CA] hover:bg-blue-700 text-white font-semibold py-3 px-8 
+                          rounded-lg transition duration-300 shadow-md">
                     Начать Сотрудничество
                 </a>
             </div>
@@ -483,16 +471,16 @@
                 
                 <div class="flex space-x-3 mt-6">
                     <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
-                        <span class="text-base">🚀</span>
+                        <img src="img/icon/telegram.svg" alt="">
                     </a>
                     <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
-                        <span class="text-base">📞</span>
+                        <img src="img/icon/whatsapp.svg" alt="">
                     </a>
                     <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
-                        <span class="text-base">📸</span>
+                        <img src="img/icon/instagram.svg" alt="">
                     </a>
                     <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-500 hover:border-white hover:text-white transition duration-200">
-                        <span class="text-base">🎶</span>
+                        <img src="img/icon/tiktok.svg" alt="">
                     </a>
                 </div>
             </div>
