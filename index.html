@@ -6,8 +6,13 @@
     <title>Холодильное оборудование</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </head>
 <body class="font-sans text-gray-800">
@@ -95,7 +100,7 @@
     </div>
 </header>
 
-<section class="relative">
+<section id="glavnaya" class="relative">
     
     <div class="hero-background hidden md:block relative text-white pt-20 pb-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +165,7 @@
 
     <hr class="border-gray-200">
 
-<section class="py-16 bg-white">
+<section id="products" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-light mb-2">Наши Продукты</h2>
         <p class="text-gray-600 mb-10 max-w-xl mx-auto text-sm">
@@ -223,7 +228,7 @@
 
     <hr class="border-gray-200">
 
-<section class="py-16 bg-[#F4F9FF]">
+<section id="production" class="py-16 bg-[#F4F9FF]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <div class="mb-12">
@@ -268,7 +273,8 @@
 </section>
 
     <hr class="border-gray-200">
-<section class="py-16 bg-white">
+
+<section id="gallery" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-light mb-2 md:text-4xl">
             Галерея Реализованных <br class="md:hidden"> Проектов
@@ -313,7 +319,7 @@
 </section>
     <hr class="border-gray-200">
 
-<section class="py-16 bg-blue-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="service" class="py-16 bg-blue-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col md:flex-row md:items-center">
 
@@ -372,8 +378,7 @@
     </div>
 </section>
 
-
-<section class="py-16 bg-white">
+<section id="advantages" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-12">
@@ -440,8 +445,7 @@
 </section>
 
 
-
-<section class="py-20 bg-[#F4F9FF]">
+<section id="contact" class="py-20 bg-[#F4F9FF]">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-[#2B3E62] text-white p-10 md:p-16 rounded-3xl shadow-2xl">
             <div class="text-center">

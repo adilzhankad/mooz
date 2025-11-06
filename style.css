@@ -14,3 +14,7 @@
         left: 0;
         background-color: rgba(0, 0, 50, 0.75); /* Темно-синий/черный цвет с прозрачностью 75% */
     }
+
+    html {
+  scroll-behavior: smooth;
+}
