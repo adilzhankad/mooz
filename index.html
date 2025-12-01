@@ -4,18 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Холодильное оборудование</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    
     <link rel="shortcut icon" href="img/mooztau-white.svg" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3e6cb6", // Твой основной синий цвет
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#14181e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"] // Шрифт для секции
+                    },
+                    borderRadius: {
+                        "lg": "1rem", 
+                        "xl": "1.5rem"
+                    }
+                },
+            },
+        }
+    </script>
 
     <style>
         html {
             scroll-behavior: smooth;
         }
-    </style>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        /* Настройки отображения иконок */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Убираем стрелочки (спиннеры) у input type="number" */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="font-sans text-gray-800">
 <header x-data="{ mobileMenuOpen: false }" class="absolute w-full z-20 text-white">
@@ -274,6 +318,375 @@
     </div>
 </section>
 
+<section class="relative w-full py-12 lg:py-20 bg-white font-display">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10 lg:mb-14">
+      <h2 class="text-3xl font-bold leading-tight tracking-tight text-[#101318] dark:text-gray-100 sm:text-4xl">
+        Рассчитать стоимость витрины
+      </h2>
+    </div>
+
+    <div
+      class="bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl w-full p-6 sm:p-8 lg:p-10 border border-gray-100 dark:border-gray-700"
+      x-data="pricingCalculator()"
+      x-init="init()"
+    >
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-10">
+
+        <!-- LEFT: FORM -->
+        <div class="lg:col-span-5 flex flex-col space-y-8">
+
+          <!-- WIDTH -->
+          <div>
+            <div class="flex justify-between items-baseline mb-2">
+              <h3 class="text-[#101318] dark:text-gray-100 text-lg font-bold">Длина оборудования</h3>
+            </div>
+
+            <div class="relative group">
+              <input
+                class="block w-full rounded-xl border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 py-4 pl-4 pr-12 text-lg shadow-sm focus:border-primary focus:ring-primary sm:text-sm transition-all duration-200"
+                :class="overMax ? 'border-amber-500 focus:border-amber-500 focus:ring-amber-500' : ''"
+                id="width-input"
+                min="1"
+                name="width"
+                placeholder="Введите длину"
+                type="number"
+                step="0.1"
+                x-model.number="widthM"
+              />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                <span class="text-gray-500 dark:text-gray-400 font-medium">м</span>
+              </div>
+            </div>
+
+            <div x-show="overMax" x-cloak class="mt-2 flex items-center gap-2 text-amber-600 text-sm font-medium animate-pulse">
+              <span class="material-symbols-outlined text-lg">warning</span>
+              <span>Для расчета длины более 12м свяжитесь с менеджером</span>
+            </div>
+
+            <div x-show="underMin" x-cloak class="mt-2 text-sm font-medium text-amber-600">
+              Минимальная длина для прайса — 2м (в расчёте будет применено 2м)
+            </div>
+
+            <div class="mt-3 flex flex-wrap items-center gap-2">
+              <span class="text-xs text-gray-400 font-medium">Популярные:</span>
+              <button type="button" @click="widthM = 2"
+                class="px-2.5 py-1 text-xs font-medium rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors">2м</button>
+              <button type="button" @click="widthM = 3"
+                class="px-2.5 py-1 text-xs font-medium rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors">3м</button>
+              <button type="button" @click="widthM = 4"
+                class="px-2.5 py-1 text-xs font-medium rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors">4м</button>
+              <button type="button" @click="widthM = 5"
+                class="px-2.5 py-1 text-xs font-medium rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors">5м</button>
+              <button type="button" @click="widthM = 6"
+                class="px-2.5 py-1 text-xs font-medium rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors">6м</button>
+            </div>
+
+            <div class="mt-2 text-xs text-[#5c6d8a] dark:text-gray-400">
+              Тарифный метраж: <span class="font-semibold" x-text="pricing ? (meterKey + 'м') : '—'"></span>
+              <span class="ml-1" x-show="pricing && Number(widthM) % 1 !== 0">(округление вверх)</span>
+            </div>
+          </div>
+
+          <!-- CITY -->
+          <div>
+            <h3 class="text-[#101318] dark:text-gray-100 text-lg font-bold mb-2">Город доставки</h3>
+            <div class="relative">
+              <select
+                class="appearance-none block w-full rounded-xl border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 py-4 pl-4 pr-12 text-base shadow-sm focus:border-primary focus:ring-primary cursor-pointer transition-all duration-200 text-ellipsis overflow-hidden"
+                x-model="city"
+              >
+                <option value="" disabled>Выберите регион...</option>
+                <option>Астана</option>
+                <option>Алматы</option>
+                <option>Шымкент</option>
+                <option>Абайская область</option>
+                <option>Акмолинская область</option>
+                <option>Актюбинская область</option>
+                <option>Атырауская область</option>
+                <option>Восточно-Казахстанская область</option>
+                <option>Жамбылская область</option>
+                <option>Жетысуская область</option>
+                <option>Западно-Казахстанская область</option>
+                <option>Карагандинская область</option>
+                <option>Костанайская область</option>
+                <option>Кызылординская область</option>
+                <option>Мангистауская область</option>
+                <option>Павлодарская область</option>
+                <option>Северо-Казахстанская область</option>
+                <option>Туркестанская область</option>
+                <option>Улытауская область</option>
+              </select>
+
+              <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-500 dark:text-gray-400">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+            </div>
+
+            <div x-show="city && !hasCityTariff" x-cloak class="mt-2 text-sm font-medium text-amber-600">
+              Для выбранного региона нет тарифа в таблице.
+            </div>
+          </div>
+
+          <!-- DOOR TYPE -->
+          <div>
+            <h3 class="text-[#101318] dark:text-gray-100 text-lg font-bold mb-4">Тип дверей</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 pt-2">
+
+              <label class="cursor-pointer relative group">
+                <input class="peer sr-only" name="door_type" type="radio" value="Hinged Doors" x-model="selectedDoorType"/>
+                <div class="h-full flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200
+                            bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300
+                            group-hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary">
+                  <span class="material-symbols-outlined text-3xl mb-2">door_front</span>
+                  <span class="font-medium text-xs text-center">Распашные</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer relative group">
+                <input class="peer sr-only" name="door_type" type="radio" value="Sliding Doors" x-model="selectedDoorType"/>
+                <div class="absolute -top-3 inset-x-0 mx-auto w-max z-10">
+                  <span class="bg-[#F8C519] text-[#101318] text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm uppercase tracking-wide">
+                    Популярное
+                  </span>
+                </div>
+                <div class="h-full flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200
+                            bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300
+                            group-hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary">
+                  <span class="material-symbols-outlined text-3xl mb-2">door_sliding</span>
+                  <span class="font-medium text-xs text-center">Купе</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer relative group">
+                <input class="peer sr-only" name="door_type" type="radio" value="Open Display" x-model="selectedDoorType"/>
+                <div class="h-full flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200
+                            bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300
+                            group-hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5 peer-checked:text-primary">
+                  <span class="material-symbols-outlined text-3xl mb-2">shelves</span>
+                  <span class="font-medium text-xs text-center">Открытая</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: IMAGE -->
+        <div class="lg:col-span-7 flex flex-col">
+          <div class="relative w-full h-[350px] sm:h-[450px] bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-6 flex items-center justify-center overflow-hidden group border border-gray-100 dark:border-gray-800">
+
+            <img x-show="selectedDoorType === 'Hinged Doors'"
+                 x-cloak
+                 x-transition:enter="transition ease-out duration-500"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-300"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="absolute inset-0 w-full h-full object-contain p-6 z-10"
+                 src="img/types/Gemini_Generated_Image_edybpjedybpjedyb.png"
+                 alt="Витрина с распашными дверями"/>
+
+            <img x-show="selectedDoorType === 'Sliding Doors'"
+                 x-transition:enter="transition ease-out duration-500"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-300"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="absolute inset-0 w-full h-full object-contain p-6 z-10"
+                 src="img/types/Gemini_Generated_Image_edybpjedybpjedyb (1).png"
+                 alt="Витрина с дверьми купе"/>
+
+            <img x-show="selectedDoorType === 'Open Display'"
+                 x-cloak
+                 x-transition:enter="transition ease-out duration-500"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-300"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="absolute inset-0 w-full h-full object-contain p-6 z-10"
+                 src="img/types/Gemini_Generated_Image_edybpjedybpjedyb (2).png"
+                 alt="Открытая витрина"/>
+
+            <div class="absolute bottom-4 left-0 w-full text-center z-20 pointer-events-none">
+              <p class="text-xs font-medium text-[#5c6d8a] dark:text-gray-500 uppercase tracking-widest bg-white/50 dark:bg-black/50 px-3 py-1.5 rounded-full inline-block backdrop-blur-sm shadow-sm border border-white/20">
+                Визуализация модели
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESULT -->
+      <div class="border-t border-gray-100 dark:border-gray-700 pt-8">
+        <div class="bg-[#F4F8FB] dark:bg-gray-800 rounded-2xl p-6 lg:p-8 border border-primary/10">
+
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+            <div class="text-center md:text-left">
+              <p class="text-sm font-medium text-[#5c6d8a] dark:text-gray-400 mb-1">Ориентировочная стоимость под ключ</p>
+
+              <div class="flex items-baseline justify-center md:justify-start gap-2">
+                <span class="text-xl font-semibold text-gray-400">от</span>
+
+                <p class="text-4xl sm:text-5xl font-bold text-[#101318] dark:text-gray-100 tracking-tight whitespace-nowrap">
+                  <span x-show="!canCalculate" class="text-gray-400">—</span>
+                  <span x-show="canCalculate" x-text="fmt(total)"></span>
+                </p>
+              </div>
+
+              <p class="mt-2 text-xs text-[#5c6d8a] dark:text-gray-400">
+                Тарифный метраж: <span class="font-semibold" x-text="pricing ? (meterKey + 'м') : '—'"></span>
+              </p>
+            </div>
+
+            <button
+              class="w-full md:w-auto font-medium py-3 px-8 rounded-xl shadow-lg transition-all duration-200 transform active:scale-95 whitespace-nowrap"
+              :disabled="!canRequest"
+              :class="!canRequest ? 'bg-gray-400 cursor-not-allowed text-white shadow-none' : 'bg-primary hover:bg-blue-700 text-white shadow-primary/30'"
+              @click="onRequest()"
+            >
+              <span x-text="buttonText"></span>
+            </button>
+          </div>
+
+          <hr class="border-gray-200 dark:border-gray-700 mb-6">
+
+          <!-- <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+            <div class="flex items-center justify-between bg-white/70 dark:bg-black/20 rounded-xl px-4 py-3 border border-white/40">
+              <span class="text-[#5c6d8a] dark:text-gray-400">Оборудование</span>
+              <span class="font-semibold text-[#101318] dark:text-gray-100" x-text="canCalculate ? fmt(base) : '—'"></span>
+            </div>
+            <div class="flex items-center justify-between bg-white/70 dark:bg-black/20 rounded-xl px-4 py-3 border border-white/40">
+              <span class="text-[#5c6d8a] dark:text-gray-400">Доставка</span>
+              <span class="font-semibold text-[#101318] dark:text-gray-100" x-text="canCalculate ? fmt(delivery) : '—'"></span>
+            </div>
+            <div class="flex items-center justify-between bg-white/70 dark:bg-black/20 rounded-xl px-4 py-3 border border-white/40">
+              <span class="text-[#5c6d8a] dark:text-gray-400">Установка</span>
+              <span class="font-semibold text-[#101318] dark:text-gray-100" x-text="canCalculate ? fmt(install) : '—'"></span>
+            </div>
+          </div> -->
+
+          <p class="mt-5 text-xs text-[#5c6d8a] dark:text-gray-400">
+            * Итоговая стоимость может зависеть от комплектации. Для длины более 12м — расчёт через менеджера.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function pricingCalculator() {
+    return {
+      pricing: null,
+
+      // state
+      widthM: 3,
+      city: '',
+      selectedDoorType: 'Sliding Doors',
+
+      async init() {
+        // JSON лежит в корне проекта рядом с index.html:
+        const res = await fetch('./pricing_full_ru.json', { cache: 'no-store' });
+        this.pricing = await res.json();
+      },
+
+      // flags
+      get overMax() { return Number(this.widthM) > 12; },
+      get underMin() { return Number(this.widthM) > 0 && Number(this.widthM) < 2; },
+
+      // key rule: 2.4м -> 3м (ceil), clamp to [2..12]
+      get meterKey() {
+        if (!this.pricing) return 2;
+        const w = Number(this.widthM) || 0;
+        const raw = Math.ceil(w); // <<< ВАЖНО: округление вверх
+        return Math.min(this.pricing.max_meter, Math.max(this.pricing.min_meter, raw));
+      },
+
+      // map radio values -> JSON door keys
+      get doorKey() {
+        if (this.selectedDoorType === 'Hinged Doors') return 'Распашные';
+        if (this.selectedDoorType === 'Sliding Doors') return 'Купе (Слайдер)';
+        return 'Открытая';
+      },
+
+      get hasCityTariff() {
+        if (!this.pricing || !this.city) return false;
+        const mk = String(this.meterKey);
+        return !!this.pricing.delivery_install_by_meter_and_city?.[mk]?.[this.city];
+      },
+
+      // prices
+      get base() {
+        if (!this.pricing) return 0;
+        const mk = String(this.meterKey);
+        return Number(this.pricing.base_prices_by_door_type?.[this.doorKey]?.[mk] || 0);
+      },
+      get delivery() {
+        if (!this.pricing || !this.city) return 0;
+        const mk = String(this.meterKey);
+        return Number(this.pricing.delivery_install_by_meter_and_city?.[mk]?.[this.city]?.delivery || 0);
+      },
+      get install() {
+        if (!this.pricing || !this.city) return 0;
+        const mk = String(this.meterKey);
+        return Number(this.pricing.delivery_install_by_meter_and_city?.[mk]?.[this.city]?.install || 0);
+      },
+      get total() {
+        return this.base + this.delivery + this.install;
+      },
+
+      // ui logic
+      get canCalculate() {
+        return !!this.pricing && !!this.city && this.hasCityTariff && !this.overMax;
+      },
+      get canRequest() {
+        // блокируем кнопку, пока нет города/нет тарифа/>12
+        return this.canCalculate;
+      },
+      get buttonText() {
+        if (this.overMax) return 'Свяжитесь с менеджером';
+        if (!this.city) return 'Выберите регион';
+        if (!this.hasCityTariff) return 'Нет тарифа для региона';
+        return 'Получить точный расчёт';
+      },
+
+      fmt(n) {
+        return new Intl.NumberFormat('ru-RU').format(Number(n || 0)) + ' ₸';
+      },
+
+      onRequest() {
+        // тут можешь открыть модалку / отправить в WhatsApp / перейти на форму
+        // пример: whatsapp с текстом
+        const msg = encodeURIComponent(
+          `Нужен точный расчёт витрины.\n` +
+          `Длина: ${this.widthM}м (тариф: ${this.meterKey}м)\n` +
+          `Тип дверей: ${this.doorKey}\n` +
+          `Регион: ${this.city}\n` +
+          `Ориентир: ${this.fmt(this.total)}`
+        );
+        // вставь свой номер:
+        const phone = '77000000000';
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+      }
+    }
+  }
+</script>
+
+
+
+
+
+
     <hr class="border-gray-200">
 
 <!-- <section id="gallery" class="py-16 bg-white">
@@ -530,15 +943,15 @@
             <div class="md:col-span-1">
                 <h3 class="text-xl font-semibold text-white mb-6">Наши Контакты</h3>
                 <ul class="space-y-3 text-sm">
-                    <li><span class="font-medium text-white">Телефон:</span> +7 (701) 123-45-67</li>
-                    <li><span class="font-medium text-white">E-mail:</span> info@company.kz</li>
-                    <li><span class="font-medium text-white">Адрес:</span> Г. Алматы, Пр. Абая 45, Офис 210</li>
+                    <li><span class="font-medium text-white">Телефон:</span> ‪+7 771 243 4450‬</li>
+                    <li><span class="font-medium text-white">E-mail:</span> mooztau@gmail.com</li>
+                    <li><span class="font-medium text-white">Адрес:</span> 5 м-н, Ауэзовский район, Алматы</li>
                 </ul>
             </div>
         </div>
 
         <div class="mt-16 pt-8 border-t border-gray-700 text-center text-xs">
-            &copy; Copyright 2010-2025 Mooztau.
+            &copy; Copyright 2025 Mooztau.
         </div>
     </div>
 </footer>
