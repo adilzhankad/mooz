@@ -667,13 +667,14 @@
       onRequest() {
         // тут можешь открыть модалку / отправить в WhatsApp / перейти на форму
         // пример: whatsapp с текстом
-        const msg = encodeURIComponent(
-          `Нужен точный расчёт витрины.\n` +
-          `Длина: ${this.widthM}м (тариф: ${this.meterKey}м)\n` +
-          `Тип дверей: ${this.doorKey}\n` +
-          `Регион: ${this.city}\n` +
-          `Ориентир: ${this.fmt(this.total)}`
-        );
+const msg = encodeURIComponent(
+  `Здравствуйте! Хочу уточнить точную стоимость и сроки по витрине:\n` +
+  `• Длина: ${this.widthM} м (тариф: ${this.meterKey} м)\n` +
+  `• Двери: ${this.doorKey}\n` +
+  `• Доставка: ${this.city}\n` +
+  `Ориентировочная цена по калькулятору: ${this.fmt(this.total)}`
+);
+
         // вставь свой номер:
         const phone = '77712434450';
         window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
